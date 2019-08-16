@@ -22,8 +22,7 @@ module.exports = {
             conn.query(sql, param, function (err, results) {
                 //if (err) throw err;
                 if (!results || err) {
-                    reject( err );
-                    conn.end();
+                    return reject( err );
                 } else {
                     resolve ( results );
                     conn.end();
