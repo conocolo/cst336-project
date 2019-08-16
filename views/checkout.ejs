@@ -8,33 +8,25 @@
 </head>
 <br>
 <body>
-
-    
     <% if (totalCost) { %>
-      <h1>
-          Here is a summary of your order:
-        </h1>
+    <h1>
+      Here is a summary of your order:
+    </h1>
         
-        <table id="checkoutTable" align="center">
-          <tr>
-            <th>Product Name</th>
-            <th>Product Price per Unit</th>
-            <th>Item Quantity</th>
-          </tr>
+    <table id="checkoutTable" align="center">
+      <tr>
+        <th>Product Name</th>
+        <th>Product Price per Unit</th>
+        <th>Item Quantity</th>
+      </tr>
       <% rows.forEach(function(row) { %>
       <tr>
         <th><%= row['itemName'] %></th>
         <th><%= row['price'].toLocaleString('en-US', {style: 'currency', currency: 'USD' }).split('.')[0] %></th>
         <th><%= row['itemquantity'] %></th>
       </tr>
-    </table><br>
-      
       <% }) %>
-    <% } else { %>
-      <h1>Your cart is empty!</h1>
-    <% } %>
-
-  <% if (totalCost) { %>
+    </table><br>
     Your total cost for the order will be:
     <%= totalCost.toLocaleString('en-US', {style: 'currency', currency: 'USD'}).split('.')[0] %>.<br><br><br>
     <form action="/checkoutButton">
@@ -42,7 +34,10 @@
         Checkout
       </button>
     </form>
-  <% } %>
+
+    <% } else { %>
+      <h1>Your cart is empty!</h1>
+    <% } %>
   <br>
 <br>
   
