@@ -33,15 +33,15 @@
       <h1>Your cart is empty!</h1>
     <% } %>
   </table><br>
-  Your total cost for the order will be:
-  <%= totalCost.toLocaleString('en-US', {style: 'currency', currency: 'USD'}).split('.')[0] %>.<br><br><br>
-  
-  
-  <form action="/checkoutButton">
-    <button>
-      Checkout
-    </button>
-  </form>
+  <% if (typeof rows == "object" && rows) { %>
+    Your total cost for the order will be:
+    <%= totalCost.toLocaleString('en-US', {style: 'currency', currency: 'USD'}).split('.')[0] %>.<br><br><br>
+    <form action="/checkoutButton">
+      <button>
+        Checkout
+      </button>
+    </form>
+  <% } %>
   <br>
 <br>
   
