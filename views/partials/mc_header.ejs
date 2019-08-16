@@ -16,7 +16,9 @@
   <!-- FontAwesome Icons-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <!-- Custom styles for this template -->
-  <link href="css/mc_styles.css" rel="stylesheet">
+  <link href="css/rs_styles.css" rel="stylesheet">
+  <!-- Toast plugin-->
+  <link rel="stylesheet" href="css/jquery.toast.css">
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -25,22 +27,25 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="/ac_login">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
+            <ul class="navbar-nav ml-auto nav">
+              <form method="post" action="/ac_login" class="inline">
+                <input type="hidden" name="dummy_post_param" value="hmm">
+                <button type="submit" name="submit_param" value="submit_value" class="nav-item">
+                  Home
+                </button>
+              </form>
               <li class="nav-item">
                 <a class="nav-link" href="/search">Search</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/cart">My Cart</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="/checkoutPreview">Checkout</a>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
               </li>
             </ul>
           </div>
         </div>
     </nav>
+</head>
+
