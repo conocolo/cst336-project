@@ -3,7 +3,7 @@
 /*/////////////////////////////////////////////*/
 body {
     font-family: 'Titillium Web', sans-serif;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: grey;
     color: black;
 }
 
@@ -34,7 +34,9 @@ footer {
 /*/////////////////////////////////////////////*/
 
 #adminHeader {
-    margin: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
 }
 * {box-sizing: border-box;}
 
@@ -158,9 +160,9 @@ td {
 }
 
 /* Nav bar styles */
-ul {
+#navbar {
     list-style-type: none;
-    margin: 15px;
+    margin: 0px;
     padding: 0;
     background-color: dimgrey;
     height: auto;
@@ -187,11 +189,16 @@ li {
 }
 
 .navBarActive {
-    background-color: lightblue;
+    background-color: lightgrey;
     color: black;
 }
 
 /* Work area div elements initially hidden */
+#workArea {
+    padding-top: 10px;
+
+    background-color: lightgrey;
+}
 #itemTable {
     display: none;
 }
