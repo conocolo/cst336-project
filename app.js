@@ -123,7 +123,6 @@ app.get("/adminPage", isAuthenticated, async function (req, res) {
 });
 
 app.get("/api/adminPage", isAuthenticated, async function (req, res) {
-    var conn = ia_tools.createSqlDb_connection();
     var sql = "SELECT * FROM products";
     var results;
 
@@ -134,11 +133,11 @@ app.get("/api/adminPage", isAuthenticated, async function (req, res) {
     if (req.query.action == "requestItem") {
         var sqlPull = "SELECT * FROM products WHERE itemID=?";
         var sqlParams = [req.query.itemID];
-        results = await ia_tools.sendQuery(sqlPull, sqlParams, conn);
+        results = await ia_tools.sendQuery(sqlPull, sqlParams);
         res.send(results);
     } else if (req.query.action == "redrawTable") {
         var sql = "SELECT * FROM products";
-        results = await ia_tools.sendQuery(sql, [], conn);
+        results = await ia_tools.sendQuery(sql, []);
         res.send(results);
     } else if (req.query.action == "report") {
         let queryType = req.query.query;
@@ -172,7 +171,7 @@ app.get("/api/adminPage", isAuthenticated, async function (req, res) {
                 sql += " ASC LIMIT 10";
             }
         } 
-        results = await ia_tools.sendQuery(sql, [], conn).catch(err => {error = err});
+        results = await ia_tools.sendQuery(sql, []).catch(err => {error = err}).catch(err => {console.log(err)});
 
         if (error) {
             console.log(error)
@@ -181,7 +180,7 @@ app.get("/api/adminPage", isAuthenticated, async function (req, res) {
         }
         
     } else {
-        results = await ia_tools.sendQuery(sql, [], conn);
+        results = await ia_tools.sendQuery(sql, []);
         res.render("adminPage", { "adminName": req.session.username, "rows": results });
     }
 });
@@ -193,29 +192,23 @@ app.post("/adminPage", isAuthenticated, async function (req, res) {
     let description = req.body.description;
     let tags = req.body.tags;
     let type = req.body.submitType;
-    var conn = ia_tools.createSqlDb_connection();
-
-    // open up the connection
-    conn.connect(function (err) {
-        if (err) throw err;
-    });
 
     if (type == "add") {
         var sqlAdd = "INSERT INTO products VALUES (default, ?, ?, ?, ?)";
         var sqlParamsAdd = [itemName, price, description, tags];
-        await ia_tools.postQuery(sqlAdd, sqlParamsAdd, conn);
+        await ia_tools.postQuery(sqlAdd, sqlParamsAdd).catch(err => {console.log(err)});
     } else if (type == "update") {
         var sqlUpdate = "UPDATE products SET itemName=?, price=?, description1=?, description2=? WHERE itemID=?";
         var sqlParamsUpdate = [itemName, price, description, tags, itemID];
-        await ia_tools.postQuery(sqlUpdate, sqlParamsUpdate, conn);
+        await ia_tools.postQuery(sqlUpdate, sqlParamsUpdate).catch(err => {console.log(err)});
     } else if (type == "delete") {
         var sqlDelete = "DELETE FROM products WHERE itemID=?";
         var sqlParamsDelete = [itemID];
-        await ia_tools.postQuery(sqlDelete, sqlParamsDelete, conn);
+        await ia_tools.postQuery(sqlDelete, sqlParamsDelete).catch(err => {console.log(err)});
     }
 
     var sql = "SELECT * FROM products";
-    var results = await ia_tools.sendQuery(sql, [], conn);
+    var results = await ia_tools.sendQuery(sql, []);
     res.render("adminPage", { "adminName": "ivan", "rows": results });
 });
 //------------------------------------

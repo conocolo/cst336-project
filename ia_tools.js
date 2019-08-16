@@ -23,6 +23,7 @@ module.exports = {
             conn.query(sql, param, function (err, results) {
                 //if (err) throw err;
                 if (!results || err) {
+                    console.log("err: " + err);
                     return reject( err );
                 } else {
                     resolve ( results );
@@ -36,9 +37,14 @@ module.exports = {
         var conn = this.createSqlDb_connection();
         return new Promise(function (resolve) {
             conn.query(sql, param, function (err) {
-                if (err) throw err;
-                resolve();
-                conn.end();
+                if (err) {
+                    console.log("err: " + err);
+                    return reject(err);
+                } else {
+                    resolve();
+                    conn.end();
+                }
+
             });
         });
     }
