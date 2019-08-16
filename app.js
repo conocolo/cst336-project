@@ -73,7 +73,7 @@ app.post("/ac_login", async function (req, resp) {
     if (req.session.authenticated) {
 
         var newsURL = "https://spaceflightnewsapi.net/api/v1/articles";
-        var NASA_apod_url = "https://api.nasa.gov/planetary/apod?api_key=B49OqOPlbI5JvvBHEwimMRvdtBCWEEsdjgb5eepB";
+        var NASA_apod_url = "https://api.nasa.gov/planetary/apod?api_key=d8BJpjr0e4mkipx14JIcDn6CFFYCmsguzoyTfG4E";
         var apiData = await ac_tools.sendNewsAPI_request(newsURL);
         var apodData = await ac_tools.sendAPODapi_request(NASA_apod_url);
 
