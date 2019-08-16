@@ -19,7 +19,7 @@
       <th>Item Quantity</th>
     </tr>
     
-    <% if (typeof rows == "object" && rows) { %>
+    <% if (totalCost) { %>
       <% rows.forEach(function(row) { %>
       <tr>
         <th><%= row['itemName'] %></th>
