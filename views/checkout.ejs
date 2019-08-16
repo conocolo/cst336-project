@@ -33,7 +33,7 @@
       <h1>Your cart is empty!</h1>
     <% } %>
   </table><br>
-  <% if (typeof rows == "object" && rows) { %>
+  <% if (totalCost) { %>
     Your total cost for the order will be:
     <%= totalCost.toLocaleString('en-US', {style: 'currency', currency: 'USD'}).split('.')[0] %>.<br><br><br>
     <form action="/checkoutButton">
