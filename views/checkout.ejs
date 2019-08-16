@@ -27,13 +27,13 @@
         <th><%= row['price'].toLocaleString('en-US', {style: 'currency', currency: 'USD' }).split('.')[0] %></th>
         <th><%= row['itemquantity'] %></th>
       </tr>
-      
+    </table><br>
       
       <% }) %>
     <% } else { %>
       <h1>Your cart is empty!</h1>
     <% } %>
-  </table><br>
+
   <% if (totalCost) { %>
     Your total cost for the order will be:
     <%= totalCost.toLocaleString('en-US', {style: 'currency', currency: 'USD'}).split('.')[0] %>.<br><br><br>
