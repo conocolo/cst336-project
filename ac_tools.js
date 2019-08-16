@@ -40,12 +40,17 @@ module.exports = {
         return new Promise(function (resolve, reject) {
             request(apiURL, function (error, response, body) {
                 if (!error) {
-                    var parsedData = JSON.parse(body);
 
+                    try {
+                    var parsedData = JSON.parse(body);
                     apodURL = parsedData.url;
                     apodTitle = parsedData.title;
                     apodCopyright = parsedData.copyright;
-
+                } catch {
+                    apodURL = "";
+                    apodTitle = "NASA API Fail";
+                    apodCopyright = "";
+                    }
                     resolve({ apodURL, apodTitle, apodCopyright });
                 } else {
                     console.log("error", error);
