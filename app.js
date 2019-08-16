@@ -37,7 +37,7 @@ app.post("/ac_login", async function (req, resp) {
         //var dbConn = ac_tools.createSqlDb_connection();
         var sqlQuery = ac_tools.get_isValidUser_SQL();
         var sqlParams = [req.body.ac_username];
-        var sqlResults = await ac_tools.sendQuery_getResults(dbConn, sqlQuery, sqlParams);
+        var sqlResults = await ac_tools.sendQuery_getResults(sqlQuery, sqlParams);
 
         if (typeof sqlResults != "undefined") {
             var authenticated = await ac_tools.ac_checkPassword(req.body.ac_pass, sqlResults.password);
