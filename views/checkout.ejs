@@ -19,15 +19,19 @@
       <th>Item Quantity</th>
     </tr>
     
-    <% rows.forEach(function(row) { %>
-    <tr>
-      <th><%= row['itemName'] %></th>
-      <th><%= row['price'].toLocaleString('en-US', {style: 'currency', currency: 'USD' }).split('.')[0] %></th>
-      <th><%= row['itemquantity'] %></th>
-    </tr>
-    
-    
-    <% }) %>
+    <% if (typeof rows == "object" && rows) { %>
+      <% rows.forEach(function(row) { %>
+      <tr>
+        <th><%= row['itemName'] %></th>
+        <th><%= row['price'].toLocaleString('en-US', {style: 'currency', currency: 'USD' }).split('.')[0] %></th>
+        <th><%= row['itemquantity'] %></th>
+      </tr>
+      
+      
+      <% }) %>
+    <% } else { %>
+      <h1>Your cart is empty!</h1>
+    <% } %>
   </table><br>
   Your total cost for the order will be:
   <%= totalCost.toLocaleString('en-US', {style: 'currency', currency: 'USD'}).split('.')[0] %>.<br><br><br>
