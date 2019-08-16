@@ -8,18 +8,19 @@
 </head>
 <br>
 <body>
-  <h1>
-    Here is a summary of your order:
-  </h1>
-  
-  <table id="checkoutTable" align="center">
-    <tr>
-      <th>Product Name</th>
-      <th>Product Price per Unit</th>
-      <th>Item Quantity</th>
-    </tr>
+
     
     <% if (totalCost) { %>
+      <h1>
+          Here is a summary of your order:
+        </h1>
+        
+        <table id="checkoutTable" align="center">
+          <tr>
+            <th>Product Name</th>
+            <th>Product Price per Unit</th>
+            <th>Item Quantity</th>
+          </tr>
       <% rows.forEach(function(row) { %>
       <tr>
         <th><%= row['itemName'] %></th>
