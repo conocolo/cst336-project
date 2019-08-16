@@ -17,7 +17,8 @@ module.exports = {
         return conn;
     },
 
-    sendQuery: function (sql, param, conn) {
+    sendQuery: function (sql, param) {
+        var conn = this.createSqlDb_connection();
         return new Promise(function (resolve, reject) {
             conn.query(sql, param, function (err, results) {
                 //if (err) throw err;
@@ -31,7 +32,8 @@ module.exports = {
         });
     },
 
-    postQuery: function (sql, param, conn) {
+    postQuery: function (sql, param) {
+        var conn = this.createSqlDb_connection();
         return new Promise(function (resolve) {
             conn.query(sql, param, function (err) {
                 if (err) throw err;
