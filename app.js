@@ -114,7 +114,7 @@ app.get("/adminPage", isAuthenticated, async function (req, res) {
     var sql = "SELECT * FROM products";
     var results;
 
-    results = await ia_tools.sendQuery(sql, [], conn);
+    results = await ia_tools.sendQuery(sql, []);
     res.render("adminPage", { "adminName": req.session.username, "rows": results });
 });
 
