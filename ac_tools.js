@@ -77,7 +77,8 @@ module.exports = {
         });
     },
 
-    sendQuery_getResults: function (conn, queryTxt, queryParams) {
+    sendQuery_getResults: function (queryTxt, queryParams) {
+        var conn = this.createSqlDb_connection();
         return new Promise(function (resolve, reject) {
             conn.connect(function (err) {
                 if (err) throw err;
